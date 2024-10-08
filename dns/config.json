@@ -1,0 +1,12 @@
+{
+  "Domains": [
+    "ivanskiy.com",
+    "myorchids.kyiv.ua"
+  ],
+  "IpAddresses": {
+    "Lanet": "",
+    "SimNet": ""
+  },
+  "ApiUrl": "https://api.digitalocean.com/v2",
+  "Token": ""
+}
