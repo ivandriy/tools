@@ -29,8 +29,7 @@ function Update-Dns {
                 data = $ip
             }
             $patchBodyRequest = $patchBody|ConvertTo-Json
-            $updatedRecord = Patch-ApiRequest -Uri $patchRecordUri -Body $patchBodyRequest -Headers $headers
-            Write-Log "$(Get-TimeStamp) Updated A record id: '$($updatedRecord.id)', name: '$($updatedRecord.name)', value: '$($updatedRecord.data)'"
+            Patch-ApiRequest -Uri $patchRecordUri -Body $patchBodyRequest -Headers $headers|Out-Null
 
         }
         $txtRecords.domain_records|Where-Object -Property data -Match $spfIpPattern|ForEach-Object{
@@ -45,8 +44,7 @@ function Update-Dns {
                     data = $updatedSpf
                 }
                 $patchBodyRequest = $patchBody|ConvertTo-Json
-                $updatedRecord = Patch-ApiRequest -Uri $patchRecordUri -Body $patchBodyRequest -Headers $headers
-                Write-Log "$(Get-TimeStamp) Updated TXT record id: '$($updatedRecord.id)', name: '$($updatedRecord.name)', value: '$($updatedRecord.data)'"
+                Patch-ApiRequest -Uri $patchRecordUri -Body $patchBodyRequest -Headers $headers|Out-Null
             }
         }
     }
